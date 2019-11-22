@@ -1,6 +1,6 @@
 # React-Redux-Saga GitApp
 
-[Demo](https://ArturW1998.github.io/GitApp/)
+[Demo](https://gitapp.neosvita.com/)
 
 ### Provides
 

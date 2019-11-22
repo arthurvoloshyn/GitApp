@@ -193,8 +193,7 @@
     "deploy": "node tools/deploy",
     "publish": "node tools/publish",
     "size": "npm run build && size-limit",
-    "predeploy": "npm run build",
-    "prod": "gh-pages -d build"
+    "predeploy": "npm run build"
   },
   "prettier": {
     "printWidth": 100,
