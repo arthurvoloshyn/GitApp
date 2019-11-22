@@ -3,7 +3,7 @@
   "name": "GitApp",
   "description": "GitApp with React and Redux with Redux Saga",
   "version": "0.1.0",
-  "author": "Artur Voloshyn <grandfaraon93@gmail.com>",
+  "author": "Artur Voloshyn <grand_faraon_93@mail.ru>",
   "repository": {
     "type": "git",
     "url": "https://github.com/ArturW1998/GitApp"
