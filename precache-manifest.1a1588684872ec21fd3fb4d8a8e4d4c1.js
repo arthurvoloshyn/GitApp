@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/GitAppindex.html"
   },
   {
-    "revision": "32f484314104d50f8a21",
+    "revision": "77220ea96a2cd8f7bdda",
     "url": "/GitAppscripts/bundle.59a305c.js"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/GitAppscripts/bundle.59a305c.js.LICENSE"
   },
   {
-    "revision": "50254af0f19a763df0c0",
+    "revision": "49ccaefc0b0626aa8a23",
     "url": "/GitAppscripts/modernizr.59a305c.js"
   },
   {
