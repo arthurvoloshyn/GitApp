@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e95e272dd10716e516fdd022ffe182c7",
+    "revision": "59e2d5a5211f8f8a478151ce5994def7",
     "url": "/GitAppindex.html"
   },
   {
-    "revision": "0242c6cacd47c3610d47",
+    "revision": "77220ea96a2cd8f7bdda",
     "url": "/GitAppscripts/bundle.59a305c.js"
   },
   {
