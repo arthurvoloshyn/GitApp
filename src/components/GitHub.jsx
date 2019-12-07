@@ -201,8 +201,6 @@ export class GitHub extends React.Component {
 }
 
 /* istanbul ignore next */
-function mapStateToProps(state) {
-  return { github: state.github };
-}
+const mapStateToProps = ({ github }) => ({ github });
 
 export default connect(mapStateToProps)(GitHub);

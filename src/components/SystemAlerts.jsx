@@ -160,8 +160,6 @@ export class SystemAlerts extends React.PureComponent {
 }
 
 /* istanbul ignore next */
-function mapStateToProps(state) {
-  return { app: state.app };
-}
+const mapStateToProps = ({ app }) => ({ app });
 
 export default connect(mapStateToProps)(SystemAlerts);
