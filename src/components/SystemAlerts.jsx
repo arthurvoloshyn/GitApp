@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -74,7 +74,7 @@ const SystemAlertsWrapper = styled.div`
   z-index: 1000;
 `;
 
-export class SystemAlerts extends React.PureComponent {
+export class SystemAlerts extends PureComponent {
   constructor(props) {
     super(props);
 

@@ -11,7 +11,7 @@ import { format } from 'date-fns';
  * @param {Element} elem
  * @returns {{}}
  */
-export function datasetToObject(elem: Element): Object {
+export const datasetToObject = (elem: Element): Object => {
   const data = {};
   [].forEach.call(elem.attributes, attr => {
     /* istanbul ignore else */
@@ -21,27 +21,28 @@ export function datasetToObject(elem: Element): Object {
     }
   });
   return data;
-}
+};
 
-export function handleActions(actionsMap: Object, defaultState: Object): Function {
-  return (state = defaultState, { type, ...rest }: Object = {}): Function =>
-    produce(state, (draft): Object => {
-      const action = actionsMap[type];
-      let newState;
+export const handleActions = (actionsMap: Object, defaultState: Object): Function => (
+  state = defaultState,
+  { type, ...rest }: Object = {},
+): Function =>
+  produce(state, (draft): Object => {
+    const action = actionsMap[type];
+    let newState;
 
-      if (action) {
-        newState = action(draft, rest);
-      }
+    if (action) {
+      newState = action(draft, rest);
+    }
 
-      if (newState) {
-        return newState;
-      }
+    if (newState) {
+      return newState;
+    }
 
-      return draft;
-    });
-}
+    return draft;
+  });
 
-export function keyMirror(obj: Object): Object {
+export const keyMirror = (obj: Object): Object => {
   const output = {};
 
   for (const key in obj) {
@@ -51,7 +52,7 @@ export function keyMirror(obj: Object): Object {
   }
 
   return output;
-}
+};
 
 /**
  * Log grouped messages to the console
@@ -60,7 +61,7 @@ export function keyMirror(obj: Object): Object {
  * @param {*} data
  * @param {Object} [options]
  */
-export function logger(type: string, title: string, data: any, options: Object = {}) {
+export const logger = (type: string, title: string, data: any, options: Object = {}) => {
   /* istanbul ignore else */
   if (process.env.NODE_ENV === 'development') {
     /* eslint-disable no-console */
@@ -89,7 +90,7 @@ export function logger(type: string, title: string, data: any, options: Object =
     }
     /* eslint-enable */
   }
-}
+};
 
 // $FlowFixMe
 export const spread = produce(Object.assign);

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
@@ -52,7 +52,7 @@ const Heading = styled.h1`
   })};
 `;
 
-export class Home extends React.PureComponent {
+export class Home extends PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
@@ -91,8 +91,6 @@ export class Home extends React.PureComponent {
 }
 
 /* istanbul ignore next */
-function mapStateToProps(state) {
-  return { user: state.user };
-}
+const mapStateToProps = ({ user }) => ({ user });
 
 export default connect(mapStateToProps)(Home);

@@ -1,5 +1,5 @@
 import { hot } from 'react-hot-loader/root';
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Router, Switch, Route } from 'react-router-dom';
@@ -47,7 +47,7 @@ const Main = styled.main`
   ${MainPrivate};
 `;
 
-export class App extends React.Component {
+export class App extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
@@ -106,10 +106,6 @@ export class App extends React.Component {
 }
 
 /* istanbul ignore next */
-function mapStateToProps(state) {
-  return {
-    user: state.user,
-  };
-}
+const mapStateToProps = ({ user }) => ({ user });
 
 export default hot(connect(mapStateToProps)(App));

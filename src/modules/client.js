@@ -18,9 +18,7 @@ export class ServerError extends Error {
   }
 }
 
-export function parseError(error: string): string {
-  return error || 'Something went wrong';
-}
+export const parseError = (error: string): string => error || 'Something went wrong';
 
 /**
  * Fetch data
@@ -33,7 +31,7 @@ export function parseError(error: string): string {
  *
  * @returns {Promise}
  */
-export function request(url: string, options: Object = {}): Promise<*> {
+export const request = (url: string, options: Object = {}): Promise<*> => {
   const config = {
     method: 'GET',
     ...options,
@@ -89,4 +87,4 @@ export function request(url: string, options: Object = {}): Promise<*> {
       return response.text();
     }
   });
-}
+};

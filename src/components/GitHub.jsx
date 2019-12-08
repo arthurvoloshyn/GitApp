@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -96,7 +96,7 @@ const ItemHeader = styled.div`
   }
 `;
 
-export class GitHub extends React.Component {
+export class GitHub extends Component {
   constructor(props) {
     super(props);
 

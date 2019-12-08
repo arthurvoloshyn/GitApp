@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { appColor, headerHeight } from 'modules/theme';
@@ -61,7 +61,7 @@ const Logout = styled.button`
   }
 `;
 
-export default class Header extends React.PureComponent {
+export default class Header extends PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
   };
