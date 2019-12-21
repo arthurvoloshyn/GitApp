@@ -8,10 +8,12 @@ import Icon from 'components/Icon';
 
 const { colors, palette } = utils.getTheme(theme);
 const variants = { ...colors, ...palette };
+const { spacer } = utils;
 
 AlertComponent.displayName = 'AlertComponent';
 
 const AlertWrapper = styled(AlertComponent)`
+  align-items: center;
   display: flex;
   line-height: 1;
   padding: 0;
@@ -23,7 +25,7 @@ const AlertIcon = styled.div`
   background-color: ${({ variant }) => variants[variant]};
   color: #fff;
   display: flex;
-  padding: ${utils.spacer(3)};
+  padding: ${spacer(3)};
 `;
 
 const AlertButton = styled.button`
@@ -31,15 +33,16 @@ const AlertButton = styled.button`
   color: #ccc;
   pointer-events: all;
   position: absolute;
-  right: ${utils.spacer(1)};
-  top: ${utils.spacer(1)};
+  right: ${spacer(2)};
+  top: ${spacer(1)};
 `;
 
 const Alert = ({ children, handleClickClose, id, icon, ...rest }) => {
+  const { variant } = rest;
   const output = {};
   let name;
 
-  switch (rest.variant) {
+  switch (variant) {
     case 'success': {
       name = icon || 'check-circle';
       break;
@@ -73,6 +76,8 @@ const Alert = ({ children, handleClickClose, id, icon, ...rest }) => {
     );
   }
 
+  const { button: outputButton } = output;
+
   return (
     <AlertWrapper {...rest} data-testid="AlertWrapper">
       <AlertIcon {...rest}>
@@ -81,7 +86,7 @@ const Alert = ({ children, handleClickClose, id, icon, ...rest }) => {
       <Box p={2} pr={handleClickClose ? 3 : 2}>
         {children}
       </Box>
-      {output.button}
+      {outputButton}
     </AlertWrapper>
   );
 };

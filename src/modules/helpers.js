@@ -11,13 +11,13 @@ import { format } from 'date-fns';
  * @param {Element} elem
  * @returns {{}}
  */
-export const datasetToObject = (elem: Element): Object => {
+export const datasetToObject = ({ attributes }: Element): Object => {
   const data = {};
-  [].forEach.call(elem.attributes, attr => {
+  [].forEach.call(attributes, ({ name, value }) => {
     /* istanbul ignore else */
-    if (/^data-/.test(attr.name)) {
-      const camelCaseName = attr.name.substr(5).replace(/-(.)/g, ($0, $1) => $1.toUpperCase());
-      data[camelCaseName] = attr.value;
+    if (/^data-/.test(name)) {
+      const camelCaseName = name.substr(5).replace(/-(.)/g, ($0, $1) => $1.toUpperCase());
+      data[camelCaseName] = value;
     }
   });
   return data;

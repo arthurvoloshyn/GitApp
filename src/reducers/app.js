@@ -3,6 +3,8 @@ import { handleActions } from 'modules/helpers';
 
 import { ActionTypes } from 'constants/index';
 
+const { HIDE_ALERT, SHOW_ALERT } = ActionTypes;
+
 export const appState = {
   alerts: [],
 };
@@ -13,10 +15,10 @@ export default {
       [REHYDRATE]: draft => {
         draft.alerts = [];
       },
-      [ActionTypes.HIDE_ALERT]: (draft, { payload: { id } }) => {
+      [HIDE_ALERT]: (draft, { payload: { id } }) => {
         draft.alerts = draft.alerts.filter(d => d.id !== id);
       },
-      [ActionTypes.SHOW_ALERT]: (draft, { payload }) => {
+      [SHOW_ALERT]: (draft, { payload }) => {
         draft.alerts.push(payload);
       },
     },

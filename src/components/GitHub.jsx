@@ -22,7 +22,9 @@ import {
 import Loader from 'components/Loader';
 
 const { responsive, spacer } = utils;
-const { grays } = theme;
+const {
+  grays: { gray60 },
+} = theme;
 
 const GitHubGrid = styled.ul`
   display: grid;
@@ -92,18 +94,14 @@ const ItemHeader = styled.div`
   margin-bottom: ${spacer(3)};
 
   small {
-    color: ${grays.gray60};
+    color: ${gray60};
   }
 `;
 
 export class GitHub extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      query: 'react',
-    };
-  }
+  state = {
+    query: 'react',
+  };
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -118,16 +116,25 @@ export class GitHub extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { dispatch, github } = this.props;
+    const {
+      dispatch,
+      github: {
+        repos: { message },
+      },
+    } = this.props;
     const { changedTo } = treeChanges(prevProps, this.props);
+    const alertSettings = { variant: 'danger' };
 
     if (changedTo('github.repos.status', STATUS.ERROR)) {
-      dispatch(showAlert(github.repos.message, { variant: 'danger' }));
+      dispatch(showAlert(message, alertSettings));
     }
   }
 
-  handleClick = e => {
-    const { query } = e.currentTarget.dataset;
+  handleClick = ({
+    currentTarget: {
+      dataset: { query },
+    },
+  }) => {
     const { dispatch } = this.props;
 
     this.setState({
@@ -139,28 +146,34 @@ export class GitHub extends Component {
 
   render() {
     const { query } = this.state;
-    const { github } = this.props;
-    const data = github.repos.data[query] || [];
+    const {
+      github: {
+        repos: { data: reposData, status },
+      },
+    } = this.props;
+    const data = reposData[query] || [];
     let output;
 
-    if (github.repos.status === STATUS.SUCCESS) {
+    if (status === STATUS.SUCCESS) {
       if (data.length) {
         output = (
           <GitHubGrid data-type={query} data-testid="GitHubGrid">
-            {github.repos.data[query].map(d => (
-              <li key={d.id}>
-                <Item href={d.html_url} target="_blank">
-                  <Image src={d.owner.avatar_url} alt={d.owner.login} />
-                  <ItemHeader>
-                    <Heading as="h5" lineHeight={1}>
-                      {d.name}
-                    </Heading>
-                    <small>{d.owner.login}</small>
-                  </ItemHeader>
-                  <Paragraph>{d.description}</Paragraph>
-                </Item>
-              </li>
-            ))}
+            {reposData[query].map(
+              ({ id, html_url, name, description, owner: { avatar_url, login } }) => (
+                <li key={id}>
+                  <Item href={html_url} target="_blank">
+                    <Image src={avatar_url} alt={login} />
+                    <ItemHeader>
+                      <Heading as="h5" lineHeight={1}>
+                        {name}
+                      </Heading>
+                      <small>{login}</small>
+                    </ItemHeader>
+                    <Paragraph>{description}</Paragraph>
+                  </Item>
+                </li>
+              ),
+            )}
           </GitHubGrid>
         );
       } else {
@@ -175,7 +188,7 @@ export class GitHub extends Component {
         <Flex justifyContent="center">
           <ButtonGroup role="group" aria-label="GitHub Selector" data-testid="GitHubSelector">
             <Button
-              animate={query === 'react' && github.repos.status === 'running'}
+              animate={query === 'react' && status === 'running'}
               bordered={query !== 'react'}
               size="lg"
               data-query="react"
@@ -184,7 +197,7 @@ export class GitHub extends Component {
               React
             </Button>
             <Button
-              animate={query === 'redux' && github.repos.status === 'running'}
+              animate={query === 'redux' && status === 'running'}
               bordered={query !== 'redux'}
               size="lg"
               data-query="redux"

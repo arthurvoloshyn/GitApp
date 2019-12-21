@@ -201,6 +201,7 @@
       }
     ],
     "react/static-property-placement": "off",
+    "react/state-in-constructor": "off",
     "redux-saga/no-yield-in-race": "error",
     "redux-saga/yield-effects": "error"
   }

@@ -9,23 +9,25 @@ import { hideAlert } from 'actions';
 import Transition from 'components/Transition';
 import Alert from 'components/Alert';
 
+const { spacer, responsive } = utils;
+
 const Base = styled.div`
   position: fixed;
   z-index: 1000;
 
   > div {
     > * + * {
-      margin-top: ${utils.spacer(3)};
+      margin-top: ${spacer(3)};
     }
   }
 `;
 
 const TopLeft = styled(Base)`
-  left: ${utils.spacer(3)};
-  top: ${utils.spacer(3)};
+  left: ${spacer(3)};
+  top: ${spacer(3)};
   width: 26rem;
 
-  ${/* sc-custom '@media-query' */ utils.responsive({
+  ${/* sc-custom '@media-query' */ responsive({
     md: `
       width: 32rem;
     `,
@@ -33,11 +35,11 @@ const TopLeft = styled(Base)`
 `;
 
 const TopRight = styled(Base)`
-  right: ${utils.spacer(3)};
-  top: ${utils.spacer(3)};
+  right: ${spacer(3)};
+  top: ${spacer(3)};
   width: 26rem;
 
-  ${/* sc-custom '@media-query' */ utils.responsive({
+  ${/* sc-custom '@media-query' */ responsive({
     md: `
       width: 32rem;
     `,
@@ -45,11 +47,11 @@ const TopRight = styled(Base)`
 `;
 
 const BottomLeft = styled(Base)`
-  bottom: ${utils.spacer(3)};
-  left: ${utils.spacer(3)};
+  bottom: ${spacer(3)};
+  left: ${spacer(3)};
   width: 26rem;
 
-  ${/* sc-custom '@media-query' */ utils.responsive({
+  ${/* sc-custom '@media-query' */ responsive({
     md: `
       width: 32rem;
     `,
@@ -57,11 +59,11 @@ const BottomLeft = styled(Base)`
 `;
 
 const BottomRight = styled(Base)`
-  bottom: ${utils.spacer(3)};
-  right: ${utils.spacer(3)};
+  bottom: ${spacer(3)};
+  right: ${spacer(3)};
   width: 26rem;
 
-  ${/* sc-custom '@media-query' */ utils.responsive({
+  ${/* sc-custom '@media-query' */ responsive({
     md: `
       width: 32rem;
     `,
@@ -75,11 +77,7 @@ const SystemAlertsWrapper = styled.div`
 `;
 
 export class SystemAlerts extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.timeouts = {};
-  }
+  timeouts = {};
 
   static propTypes = {
     app: PropTypes.object.isRequired,
@@ -94,11 +92,11 @@ export class SystemAlerts extends PureComponent {
 
     /* istanbul ignore else */
     if (alerts.length) {
-      alerts.forEach(d => {
-        if (d.timeout && !this.timeouts[d.id]) {
-          this.timeouts[d.id] = setTimeout(() => {
-            dispatch(hideAlert(d.id));
-          }, d.timeout * 1000);
+      alerts.forEach(({ timeout, id }) => {
+        if (timeout && !this.timeouts[id]) {
+          this.timeouts[id] = setTimeout(() => {
+            dispatch(hideAlert(id));
+          }, timeout * 1000);
         }
       });
     }
@@ -112,32 +110,32 @@ export class SystemAlerts extends PureComponent {
 
   handleClick = e => {
     e.preventDefault();
-    const { dataset } = e.currentTarget;
+    const {
+      currentTarget: {
+        dataset: { id },
+      },
+    } = e;
     const { dispatch } = this.props;
 
-    dispatch(hideAlert(dataset.id));
+    dispatch(hideAlert(id));
   };
 
-  renderAlerts(position) {
-    const { app } = this.props;
-    const items = app.alerts.filter(d => d.position === position);
+  renderAlerts = position => {
+    const {
+      app: { alerts },
+    } = this.props;
+    const items = alerts.filter(d => d.position === position);
 
     if (!items.length) {
       return null;
     }
 
-    return items.map(d => (
-      <Alert
-        key={d.id}
-        id={d.id}
-        icon={d.icon}
-        handleClickClose={this.handleClick}
-        variant={d.variant}
-      >
-        {d.message}
+    return items.map(({ id, icon, variant, message }) => (
+      <Alert key={id} id={id} icon={icon} handleClickClose={this.handleClick} variant={variant}>
+        {message}
       </Alert>
     ));
-  }
+  };
 
   render() {
     return (

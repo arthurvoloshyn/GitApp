@@ -1,19 +1,20 @@
 import Modernizr from 'modernizr';
 
+const { userAgent, appVersion } = navigator;
+
 const BrowserDetect = {
   init() {
     this.browser = this.searchString(this.dataBrowser) || 'Other';
-    this.version =
-      this.searchVersion(navigator.userAgent) ||
-      this.searchVersion(navigator.appVersion) ||
-      'Unknown';
+    this.version = this.searchVersion(userAgent) || this.searchVersion(appVersion) || 'Unknown';
   },
   searchString(data) {
     for (let i = 0; i < data.length; i++) {
       const dataString = data[i].string;
-      this.versionSearchString = data[i].subString;
+      const dataSubString = data[i].subString;
 
-      if (dataString.indexOf(data[i].subString) !== -1) {
+      this.versionSearchString = dataSubString;
+
+      if (dataString.indexOf(dataSubString) !== -1) {
         return data[i].identity;
       }
     }
@@ -35,28 +36,31 @@ const BrowserDetect = {
   },
 
   dataBrowser: [
-    { string: navigator.userAgent, subString: 'Edge', identity: 'MS Edge' },
-    { string: navigator.userAgent, subString: 'MSIE', identity: 'Explorer' },
-    { string: navigator.userAgent, subString: 'Trident', identity: 'Explorer' },
-    { string: navigator.userAgent, subString: 'Firefox', identity: 'Firefox' },
-    { string: navigator.userAgent, subString: 'Opera', identity: 'Opera' },
-    { string: navigator.userAgent, subString: 'OPR', identity: 'Opera' },
-    { string: navigator.userAgent, subString: 'Chrome', identity: 'Chrome' },
-    { string: navigator.userAgent, subString: 'Safari', identity: 'Safari' },
+    { string: userAgent, subString: 'Edge', identity: 'MS Edge' },
+    { string: userAgent, subString: 'MSIE', identity: 'Explorer' },
+    { string: userAgent, subString: 'Trident', identity: 'Explorer' },
+    { string: userAgent, subString: 'Firefox', identity: 'Firefox' },
+    { string: userAgent, subString: 'Opera', identity: 'Opera' },
+    { string: userAgent, subString: 'OPR', identity: 'Opera' },
+    { string: userAgent, subString: 'Chrome', identity: 'Chrome' },
+    { string: userAgent, subString: 'Safari', identity: 'Safari' },
   ],
 };
 
 BrowserDetect.init();
 
-Modernizr.addTest('ipad', Boolean(navigator.userAgent.match(/iPad/i)));
+const { ipad, ipod, iphone } = Modernizr;
+const { browser } = BrowserDetect;
 
-Modernizr.addTest('iphone', Boolean(navigator.userAgent.match(/iPhone/i)));
+Modernizr.addTest('ipad', Boolean(userAgent.match(/iPad/i)));
 
-Modernizr.addTest('ipod', Boolean(navigator.userAgent.match(/iPod/i)));
+Modernizr.addTest('iphone', Boolean(userAgent.match(/iPhone/i)));
 
-Modernizr.addTest('ios', Modernizr.ipad || Modernizr.ipod || Modernizr.iphone);
+Modernizr.addTest('ipod', Boolean(userAgent.match(/iPod/i)));
 
-Modernizr.addTest('ie', Boolean(BrowserDetect.browser === 'Explorer'));
+Modernizr.addTest('ios', ipad || ipod || iphone);
+
+Modernizr.addTest('ie', Boolean(browser === 'Explorer'));
 
 require('expose?MobileDetect!mobile-detect');
 require('mobile-detect/mobile-detect-modernizr');

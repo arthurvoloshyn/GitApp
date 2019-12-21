@@ -4,6 +4,8 @@ import SVG from 'react-inlinesvg';
 import styled from 'styled-components';
 import { utils } from 'styled-minimal';
 
+const { px } = utils;
+
 const IconWrapper = styled(SVG)`
   display: inline-block;
   line-height: 0;
@@ -11,7 +13,7 @@ const IconWrapper = styled(SVG)`
   svg {
     height: auto;
     max-height: 100%;
-    width: ${({ width }) => utils.px(width)};
+    width: ${({ width }) => px(width)};
   }
 `;
 

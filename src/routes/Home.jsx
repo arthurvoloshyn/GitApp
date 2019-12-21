@@ -11,7 +11,7 @@ import Background from 'components/Background';
 import Icon from 'components/Icon';
 import Logo from 'components/Logo';
 
-const { spacer } = utils;
+const { spacer, responsive } = utils;
 
 const HomeContainer = styled(Container)`
   align-items: center;
@@ -29,7 +29,7 @@ const Header = styled.div`
     height: 10rem;
     width: auto;
 
-    ${/* sc-custom '@media-query' */ utils.responsive({
+    ${/* sc-custom '@media-query' */ responsive({
       lg: `
         height: 15rem;
      `,
@@ -45,7 +45,7 @@ const Heading = styled.h1`
   margin-top: 0;
   text-align: center;
 
-  ${/* sc-custom '@media-query' */ utils.responsive({
+  ${/* sc-custom '@media-query' */ responsive({
     lg: `
       font-size: 4rem;
     `,
@@ -65,7 +65,10 @@ export class Home extends PureComponent {
   };
 
   render() {
-    const { user } = this.props;
+    const {
+      user: { status },
+    } = this.props;
+    const { name } = config;
 
     return (
       <Background key="Home" data-testid="HomeWrapper">
@@ -73,9 +76,9 @@ export class Home extends PureComponent {
           <Header>
             <Logo type="logo" />
           </Header>
-          <Heading>{config.name}</Heading>
+          <Heading>{name}</Heading>
           <Button
-            animate={user.status === 'running'}
+            animate={status === 'running'}
             onClick={this.handleClickLogin}
             size="xl"
             textTransform="uppercase"

@@ -3,10 +3,13 @@ import { handleActions } from 'modules/helpers';
 
 import { ActionTypes, STATUS } from 'constants/index';
 
+const { GITHUB_GET_REPOS, GITHUB_GET_REPOS_SUCCESS, GITHUB_GET_REPOS_FAILURE } = ActionTypes;
+const { IDLE, RUNNING, SUCCESS, ERROR } = STATUS;
+
 export const githubState = {
   repos: {
     data: {},
-    status: STATUS.IDLE,
+    status: IDLE,
     message: '',
     query: '',
   },
@@ -15,21 +18,23 @@ export const githubState = {
 export default {
   github: handleActions(
     {
-      [ActionTypes.GITHUB_GET_REPOS]: (draft, { payload }) => {
-        draft.repos.data[payload.query] = draft.repos.data[payload.query]
-          ? draft.repos.data[payload.query]
-          : [];
+      [GITHUB_GET_REPOS]: (draft, { payload: { query } }) => {
+        const repos = draft.repos.data[query];
+
+        draft.repos.data[query] = repos || [];
         draft.repos.message = '';
-        draft.repos.query = payload.query;
-        draft.repos.status = STATUS.RUNNING;
+        draft.repos.query = query;
+        draft.repos.status = RUNNING;
       },
-      [ActionTypes.GITHUB_GET_REPOS_SUCCESS]: (draft, { payload }) => {
-        draft.repos.data[draft.repos.query] = payload.data || [];
-        draft.repos.status = STATUS.SUCCESS;
+      [GITHUB_GET_REPOS_SUCCESS]: (draft, { payload: { data } }) => {
+        const repos = draft.repos.query;
+
+        draft.repos.data[repos] = data || [];
+        draft.repos.status = SUCCESS;
       },
-      [ActionTypes.GITHUB_GET_REPOS_FAILURE]: (draft, { payload }) => {
-        draft.repos.message = parseError(payload.message);
-        draft.repos.status = STATUS.ERROR;
+      [GITHUB_GET_REPOS_FAILURE]: (draft, { payload: { message } }) => {
+        draft.repos.message = parseError(message);
+        draft.repos.status = ERROR;
       },
     },
     githubState,

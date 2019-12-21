@@ -1,5 +1,5 @@
-import { hot } from 'react-hot-loader/root';
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader/root';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Router, Switch, Route } from 'react-router-dom';
@@ -26,6 +26,8 @@ import GlobalStyles from 'components/GlobalStyles';
 import RoutePublic from 'components/RoutePublic';
 import RoutePrivate from 'components/RoutePrivate';
 
+const { px } = utils;
+
 const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,7 +40,7 @@ const AppWrapper = styled.div`
 const MainPrivate = ({ isAuthenticated }) =>
   isAuthenticated &&
   css`
-    padding: ${utils.px(headerHeight)} 0 0;
+    padding: ${px(headerHeight)} 0 0;
   `;
 
 const Main = styled.main`
@@ -56,39 +58,37 @@ export class App extends Component {
   componentDidUpdate(prevProps) {
     const { dispatch } = this.props;
     const { changedTo } = treeChanges(prevProps, this.props);
+    const alertSettings = { variant: 'success', icon: 'bell' };
 
     /* istanbul ignore else */
     if (changedTo('user.isAuthenticated', true)) {
-      dispatch(showAlert('Hello! And welcome!', { variant: 'success', icon: 'bell' }));
+      dispatch(showAlert('Hello! And welcome!', alertSettings));
     }
   }
 
   render() {
     const { dispatch, user } = this.props;
+    const { name } = config;
+    const { isAuthenticated } = user;
 
     return (
       <Router history={history}>
         <ThemeProvider theme={theme}>
-          <AppWrapper logged={user.isAuthenticated}>
+          <AppWrapper logged={isAuthenticated}>
             <Helmet
               defer={false}
               htmlAttributes={{ lang: 'pt-br' }}
               encodeSpecialCharacters={true}
-              defaultTitle={config.name}
-              titleTemplate={`%s | ${config.name}`}
+              defaultTitle={name}
+              titleTemplate={`%s | ${name}`}
               titleAttributes={{ itemprop: 'name', lang: 'pt-br' }}
             />
-            {user.isAuthenticated && <Header dispatch={dispatch} user={user} />}
-            <Main isAuthenticated={user.isAuthenticated}>
+            {isAuthenticated && <Header dispatch={dispatch} user={user} />}
+            <Main isAuthenticated={isAuthenticated}>
               <Switch>
-                <RoutePublic
-                  isAuthenticated={user.isAuthenticated}
-                  path="/"
-                  exact
-                  component={Home}
-                />
+                <RoutePublic isAuthenticated={isAuthenticated} path="/" exact component={Home} />
                 <RoutePrivate
-                  isAuthenticated={user.isAuthenticated}
+                  isAuthenticated={isAuthenticated}
                   path="/private"
                   component={Private}
                 />

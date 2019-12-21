@@ -4,18 +4,22 @@ import qs from 'qs';
 
 const history = createBrowserHistory();
 
+const { location } = history;
+const { state } = location;
+const query = qs.parse(location.search.substr(1));
+
 history.location = {
-  ...history.location,
-  query: qs.parse(history.location.search.substr(1)),
+  ...location,
+  query,
   state: {},
 };
 
 /* istanbul ignore next */
 history.listen(() => {
   history.location = {
-    ...history.location,
-    query: qs.parse(history.location.search.substr(1)),
-    state: history.location.state || {},
+    ...location,
+    query,
+    state: state || {},
   };
 });
 

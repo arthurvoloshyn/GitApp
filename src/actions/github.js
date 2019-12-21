@@ -7,6 +7,8 @@ import { createActions } from 'redux-actions';
 
 import { ActionTypes } from 'constants/index';
 
+const { GITHUB_GET_REPOS } = ActionTypes;
+
 export const { githubGetRepos: getRepos } = createActions({
-  [ActionTypes.GITHUB_GET_REPOS]: (query: string) => ({ query }),
+  [GITHUB_GET_REPOS]: (query: string) => ({ query }),
 });

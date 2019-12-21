@@ -6,6 +6,8 @@ import { all, put, select, takeLatest } from 'redux-saga/effects';
 
 import { ActionTypes } from 'constants/index';
 
+const { SWITCH_MENU, EXCEPTION, GITHUB_GET_REPOS } = ActionTypes;
+
 /**
  * Switch Menu
  *
@@ -14,19 +16,21 @@ import { ActionTypes } from 'constants/index';
  */
 export function* switchMenu({ payload }) {
   try {
-    const repos = yield select(state => state.github.repos);
+    const repos = yield select(({ github }) => github.repos);
+    const { data } = repos;
+    const { query } = payload;
 
     /* istanbul ignore else */
-    if (!repos.data[payload.query] || !repos.data[payload.query].length) {
+    if (!data[query] || !data[query].length) {
       yield put({
-        type: ActionTypes.GITHUB_GET_REPOS,
+        type: GITHUB_GET_REPOS,
         payload,
       });
     }
   } catch (err) {
     /* istanbul ignore next */
     yield put({
-      type: ActionTypes.EXCEPTION,
+      type: EXCEPTION,
       payload: err,
     });
   }
@@ -36,5 +40,5 @@ export function* switchMenu({ payload }) {
  * App Sagas
  */
 export default function* root() {
-  yield all([takeLatest(ActionTypes.SWITCH_MENU, switchMenu)]);
+  yield all([takeLatest(SWITCH_MENU, switchMenu)]);
 }

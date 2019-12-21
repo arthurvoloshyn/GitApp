@@ -2,27 +2,30 @@ import { handleActions } from 'modules/helpers';
 
 import { STATUS, ActionTypes } from 'constants/index';
 
+const { USER_LOGIN, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_LOGOUT_SUCCESS } = ActionTypes;
+const { IDLE, RUNNING, READY } = STATUS;
+
 export const userState = {
   isAuthenticated: false,
-  status: STATUS.IDLE,
+  status: IDLE,
 };
 
 export default {
   user: handleActions(
     {
-      [ActionTypes.USER_LOGIN]: draft => {
-        draft.status = STATUS.RUNNING;
+      [USER_LOGIN]: draft => {
+        draft.status = RUNNING;
       },
-      [ActionTypes.USER_LOGIN_SUCCESS]: draft => {
+      [USER_LOGIN_SUCCESS]: draft => {
         draft.isAuthenticated = true;
-        draft.status = STATUS.READY;
+        draft.status = READY;
       },
-      [ActionTypes.USER_LOGOUT]: draft => {
-        draft.status = STATUS.RUNNING;
+      [USER_LOGOUT]: draft => {
+        draft.status = RUNNING;
       },
-      [ActionTypes.USER_LOGOUT_SUCCESS]: draft => {
+      [USER_LOGOUT_SUCCESS]: draft => {
         draft.isAuthenticated = false;
-        draft.status = STATUS.IDLE;
+        draft.status = IDLE;
       },
     },
     userState,

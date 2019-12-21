@@ -14,9 +14,12 @@ import Reload from 'components/Reload';
 import App from './App';
 import { register } from './serviceWorker';
 
+const loading = <Loader size={100} block />;
+const alertSettings = { id: 'sw-update', icon: 'bolt', timeout: 0 };
+
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate loading={<Loader size={100} block />} persistor={persistor}>
+    <PersistGate loading={loading} persistor={persistor}>
       <HelmetProvider>
         <App />
       </HelmetProvider>
@@ -28,6 +31,6 @@ ReactDOM.render(
 /* istanbul ignore next */
 register({
   onUpdate: () => {
-    store.dispatch(showAlert(<Reload />, { id: 'sw-update', icon: 'bolt', timeout: 0 }));
+    store.dispatch(showAlert(<Reload />, alertSettings));
   },
 });

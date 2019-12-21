@@ -5,8 +5,10 @@ import Github from 'components/GitHub';
 
 import { Box, Container, Heading, Link, Paragraph, Screen, Text, utils } from 'styled-minimal';
 
+const { spacer } = utils;
+
 const Header = styled.div`
-  margin-bottom: ${utils.spacer(3)};
+  margin-bottom: ${spacer(3)};
   text-align: center;
 `;
 

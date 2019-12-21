@@ -42,7 +42,9 @@ export const request = (url: string, options: Object = {}): Promise<*> => {
     errors.push('url');
   }
 
-  if (!config.payload && (config.method !== 'GET' && config.method !== 'DELETE')) {
+  const { payload, method, headers: configHeaders } = config;
+
+  if (!payload && method !== 'GET' && method !== 'DELETE') {
     errors.push('payload');
   }
 
@@ -53,24 +55,27 @@ export const request = (url: string, options: Object = {}): Promise<*> => {
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    ...config.headers,
+    ...configHeaders,
   };
 
   const params: Object = {
     headers,
-    method: config.method,
+    method,
   };
 
-  if (params.method !== 'GET') {
-    params.body = JSON.stringify(config.payload);
+  const { method: paramsMethod } = params;
+
+  if (paramsMethod !== 'GET') {
+    params.body = JSON.stringify(payload);
   }
 
   return fetch(url, params).then(async response => {
-    const contentType = response.headers.get('content-type');
+    const { status, statusText, headers: responseHeaders } = response;
+    const contentType = responseHeaders.get('content-type');
 
-    if (response.status > 299) {
-      const error: Object = new ServerError(response.statusText);
-      error.status = response.status;
+    if (status > 299) {
+      const error: Object = new ServerError(statusText);
+      error.status = status;
 
       if (contentType && contentType.includes('application/json')) {
         error.response = await response.json();

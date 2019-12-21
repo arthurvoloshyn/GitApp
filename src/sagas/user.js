@@ -7,6 +7,15 @@ import { all, delay, put, takeLatest } from 'redux-saga/effects';
 
 import { ActionTypes } from 'constants/index';
 
+const {
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_FAILURE,
+  USER_LOGIN,
+  USER_LOGOUT,
+  USER_LOGOUT_SUCCESS,
+  USER_LOGOUT_FAILURE,
+} = ActionTypes;
+
 /**
  * Login
  */
@@ -15,12 +24,12 @@ export function* login() {
     yield delay(400);
 
     yield put({
-      type: ActionTypes.USER_LOGIN_SUCCESS,
+      type: USER_LOGIN_SUCCESS,
     });
   } catch (err) {
     /* istanbul ignore next */
     yield put({
-      type: ActionTypes.USER_LOGIN_FAILURE,
+      type: USER_LOGIN_FAILURE,
       payload: err,
     });
   }
@@ -34,12 +43,12 @@ export function* logout() {
     yield delay(200);
 
     yield put({
-      type: ActionTypes.USER_LOGOUT_SUCCESS,
+      type: USER_LOGOUT_SUCCESS,
     });
   } catch (err) {
     /* istanbul ignore next */
     yield put({
-      type: ActionTypes.USER_LOGOUT_FAILURE,
+      type: USER_LOGOUT_FAILURE,
       payload: err,
     });
   }
@@ -49,8 +58,5 @@ export function* logout() {
  * User Sagas
  */
 export default function* root() {
-  yield all([
-    takeLatest(ActionTypes.USER_LOGIN, login),
-    takeLatest(ActionTypes.USER_LOGOUT, logout),
-  ]);
+  yield all([takeLatest(USER_LOGIN, login), takeLatest(USER_LOGOUT, logout)]);
 }
