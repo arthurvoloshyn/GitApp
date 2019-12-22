@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
@@ -12,6 +12,7 @@ import Icon from 'components/Icon';
 import Logo from 'components/Logo';
 
 const { spacer, responsive } = utils;
+const { name } = config;
 
 const HomeContainer = styled(Container)`
   align-items: center;
@@ -52,46 +53,31 @@ const Heading = styled.h1`
   })};
 `;
 
-export class Home extends PureComponent {
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
-  };
+export const Home = ({ dispatch, user: { status } }) => (
+  <Background key="Home" data-testid="HomeWrapper">
+    <HomeContainer verticalPadding>
+      <Header>
+        <Logo type="logo" />
+      </Header>
+      <Heading>{name}</Heading>
+      <Button
+        animate={status === 'running'}
+        onClick={() => dispatch(login())}
+        size="xl"
+        textTransform="uppercase"
+        data-testid="Login"
+      >
+        <Icon name="sign-in" />
+        <Text ml={2}>Start</Text>
+      </Button>
+    </HomeContainer>
+  </Background>
+);
 
-  handleClickLogin = () => {
-    const { dispatch } = this.props;
-
-    dispatch(login());
-  };
-
-  render() {
-    const {
-      user: { status },
-    } = this.props;
-    const { name } = config;
-
-    return (
-      <Background key="Home" data-testid="HomeWrapper">
-        <HomeContainer verticalPadding>
-          <Header>
-            <Logo type="logo" />
-          </Header>
-          <Heading>{name}</Heading>
-          <Button
-            animate={status === 'running'}
-            onClick={this.handleClickLogin}
-            size="xl"
-            textTransform="uppercase"
-            data-testid="Login"
-          >
-            <Icon name="sign-in" />
-            <Text ml={2}>Start</Text>
-          </Button>
-        </HomeContainer>
-      </Background>
-    );
-  }
-}
+Home.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+};
 
 /* istanbul ignore next */
 const mapStateToProps = ({ user }) => ({ user });

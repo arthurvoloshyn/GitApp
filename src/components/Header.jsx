@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { appColor, headerHeight } from 'modules/theme';
@@ -61,28 +61,20 @@ const Logout = styled.button`
   }
 `;
 
-export default class Header extends PureComponent {
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-  };
+const Header = ({ dispatch }) => (
+  <HeaderWrapper>
+    <HeaderContainer>
+      <Logo type="logo" />
+      <Logout onClick={() => dispatch(logOut())}>
+        <span>logout</span>
+        <Icon name="sign-out" width={16} />
+      </Logout>
+    </HeaderContainer>
+  </HeaderWrapper>
+);
 
-  handleClickLogout = () => {
-    const { dispatch } = this.props;
+Header.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
-    dispatch(logOut());
-  };
-
-  render() {
-    return (
-      <HeaderWrapper>
-        <HeaderContainer>
-          <Logo type="logo" />
-          <Logout onClick={this.handleClickLogout}>
-            <span>logout</span>
-            <Icon name="sign-out" width={16} />
-          </Logout>
-        </HeaderContainer>
-      </HeaderWrapper>
-    );
-  }
-}
+export default Header;
