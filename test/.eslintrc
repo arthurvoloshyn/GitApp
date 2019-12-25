@@ -9,6 +9,8 @@
   "rules": {
     "no-console": 0,
     "react/jsx-filename-extension": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "jest/no-test-callback": 0,
+    "jest/expect-expect": 0
   }
 }

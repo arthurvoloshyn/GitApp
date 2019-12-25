@@ -1,5 +1,17 @@
 {
-  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/flowtype", "prettier/react"],
+  "extends": [
+    "react-app",
+    "prettier",
+    "standard",
+    "eslint:recommended",
+    "plugin:jest/recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "airbnb",
+    "plugin:prettier/recommended",
+    "prettier/flowtype",
+    "prettier/react"
+  ],
   "parser": "babel-eslint",
   "env": {
     "browser": true,
@@ -17,7 +29,20 @@
     "APP__GITHASH": false,
     "APP__VERSION": false
   },
-  "plugins": ["babel", "cypress", "flowtype", "redux-saga"],
+  "plugins": [
+    "import",
+    "node",
+    "promise",
+    "standard",
+    "react",
+    "jest",
+    "react-hooks",
+    "prettier",
+    "babel",
+    "cypress",
+    "flowtype",
+    "redux-saga"
+  ],
   "settings": {
     "import/resolver": {
       "node": {},
