@@ -22,6 +22,7 @@ const HomeContainer = styled(Container)`
   min-height: 100vh;
 `;
 
+/* eslint-disable indent */
 const Header = styled.div`
   margin-bottom: ${spacer(3)};
   text-align: center;
@@ -37,6 +38,7 @@ const Header = styled.div`
     })};
   }
 `;
+/* eslint-enable */
 
 const Heading = styled.h1`
   color: #fff;

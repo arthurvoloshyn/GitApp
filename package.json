@@ -208,7 +208,14 @@
     "printWidth": 100,
     "singleQuote": true,
     "trailingComma": "all",
-    "jsxBracketSameLine": false
+    "jsxBracketSameLine": false,
+    "useTabs": false,
+    "tabWidth": 2,
+    "semi": true,
+    "jsxSingleQuote": false,
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "quoteProps": "as-needed"
   },
   "lint-staged": {
     "*.js?(x)": [
