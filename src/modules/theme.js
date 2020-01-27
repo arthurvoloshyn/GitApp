@@ -1,6 +1,6 @@
 export const headerHeight = 70;
 
-export const appColor = '#00b4d5';
+export const appColor = '#007f94';
 
 export const easing = 'cubic-bezier(0.35, 0.01, 0.77, 0.34);';
 

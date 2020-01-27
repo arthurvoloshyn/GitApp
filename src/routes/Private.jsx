@@ -26,7 +26,7 @@ const Private = () => (
       </Header>
       <Box textAlign="center" mb={4}>
         <Heading as="h5">Here's some GitHub data</Heading>
-        <Text fontSize={1}>
+        <Text>
           <i>*Just to have some requests in the sagas...</i>
         </Text>
       </Box>

@@ -14,12 +14,13 @@
       property="og:description"
       content="Provides: react ^16.x, react-router ^4.x, redux ^3.x, redux-saga ^0.16"
     />
-    <meta
-      property="og:image"
-      content="https://gitapp.neosvita.com/media/og-image-v1.png"
-    />
+    <meta property="og:image" content="https://gitapp.neosvita.com/media/og-image-v1.png" />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Provides: react ^16.x, react-router ^4.x, redux ^3.x, redux-saga ^0.16"
+    />
     <meta name="apple-mobile-web-app-title" content="React-Redux-Saga" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#333333" />
@@ -55,7 +56,6 @@
             <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
             <feColorMatrix
               in="blur"
-              mode="matrix"
               values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
               result="goo"
             ></feColorMatrix>
@@ -75,6 +75,7 @@
           font-size: 16px;
           height: 100%;
           width: 100%;
+          overflow: hidden;
         }
 
         body {

@@ -40,7 +40,6 @@ exports[`Private should render properly 1`] = `
       </Heading>
       <Text
         as="span"
-        fontSize={1}
       >
         <i>
           *Just to have some requests in the sagas...

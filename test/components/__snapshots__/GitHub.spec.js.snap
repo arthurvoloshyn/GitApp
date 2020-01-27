@@ -22,10 +22,10 @@ exports[`GitHub should render properly 1`] = `
       </button>
     </div>
   </div>
-  <div color="#00b4d5"
+  <div color="#007f94"
        size="32"
        type="grow"
-       class="LoaderGrow-sc-1arpd6-0 fPgAvq"
+       class="LoaderGrow-sc-1arpd6-0 cIpgRt"
   >
     <div>
     </div>

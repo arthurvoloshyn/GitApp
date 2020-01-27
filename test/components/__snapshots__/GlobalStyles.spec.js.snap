@@ -2,7 +2,7 @@
 
 exports[`GlobalStyles should render properly 1`] = `
 GlobalStyle {
-  "componentId": "sc-global-3983640001",
+  "componentId": "sc-global-2382858551",
   "isStatic": true,
   "rules": Array [
     "
@@ -35,7 +35,7 @@ GlobalStyle {
 
   a {
     color: ",
-    "#00b4d5",
+    "#007f94",
     ";
     text-decoration: none;
 

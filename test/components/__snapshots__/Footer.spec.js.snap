@@ -34,6 +34,11 @@ exports[`Footer should render properly 1`] = `
   border-top: 0.1rem solid #ddd;
 }
 
+.c3 {
+  overflow: hidden;
+  border: none;
+}
+
 @media (min-width:768px) {
   .c1 {
     padding-left: 32px;
@@ -59,22 +64,34 @@ exports[`Footer should render properly 1`] = `
           <div
             className="c2"
           >
-            <iframe
-              frameBorder="0"
-              height="20px"
-              scrolling="0"
+            <FooterIframe
+              height="20"
               src="https://ghbtns.com/github-btn.html?user=ArturW1998&repo=GitApp&type=star&count=true"
               title="GitHub Stars"
-              width="110px"
-            />
-            <iframe
-              frameBorder="0"
-              height="20px"
-              scrolling="0"
+              width="110"
+            >
+              <iframe
+                className="c3"
+                height="20"
+                src="https://ghbtns.com/github-btn.html?user=ArturW1998&repo=GitApp&type=star&count=true"
+                title="GitHub Stars"
+                width="110"
+              />
+            </FooterIframe>
+            <FooterIframe
+              height="20"
               src="https://ghbtns.com/github-btn.html?user=ArturW1998&type=follow&count=true"
               title="GitHub Follow"
-              width="140px"
-            />
+              width="140"
+            >
+              <iframe
+                className="c3"
+                height="20"
+                src="https://ghbtns.com/github-btn.html?user=ArturW1998&type=follow&count=true"
+                title="GitHub Follow"
+                width="140"
+              />
+            </FooterIframe>
           </div>
         </Flex>
       </div>

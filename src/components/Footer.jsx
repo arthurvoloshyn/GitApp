@@ -7,25 +7,26 @@ const FooterWrapper = styled.footer`
   border-top: 0.1rem solid #ddd;
 `;
 
+const FooterIframe = styled.iframe`
+  overflow: hidden;
+  border: none;
+`;
+
 const Footer = () => (
   <FooterWrapper>
     <Container py={3}>
       <Flex justifyContent="space-between">
-        <iframe
+        <FooterIframe
           title="GitHub Stars"
           src="https://ghbtns.com/github-btn.html?user=ArturW1998&repo=GitApp&type=star&count=true"
-          frameBorder="0"
-          scrolling="0"
-          width="110px"
-          height="20px"
+          width="110"
+          height="20"
         />
-        <iframe
+        <FooterIframe
           title="GitHub Follow"
           src="https://ghbtns.com/github-btn.html?user=ArturW1998&type=follow&count=true"
-          frameBorder="0"
-          scrolling="0"
-          width="140px"
-          height="20px"
+          width="140"
+          height="20"
         />
       </Flex>
     </Container>
