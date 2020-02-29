@@ -36,6 +36,8 @@ Transition.propTypes = {
 
 Transition.defaultProps = {
   appear: false,
+  children: null,
+  className: '',
   enter: true,
   exit: true,
   style: null,

@@ -25,6 +25,7 @@ exports[`App should render properly for anonymous users 1`] = `
                         path="/private"
                         component="{[Function:"
                         private]}
+                        location="{{...}}"
                         to="/"
           >
           </RoutePrivate>

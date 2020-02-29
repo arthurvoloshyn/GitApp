@@ -17,10 +17,14 @@ export const Wrapper = styled.div`
   }
 `;
 
-const Logo = ({ type = 'icon' }) => <Wrapper>{type === 'icon' ? <Icon /> : <RRS />}</Wrapper>;
+const Logo = ({ type }) => <Wrapper>{type === 'icon' ? <Icon /> : <RRS />}</Wrapper>;
 
 Logo.propTypes = {
   type: PropTypes.string,
+};
+
+Logo.defaultProps = {
+  type: 'icon',
 };
 
 export default Logo;

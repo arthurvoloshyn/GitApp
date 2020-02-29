@@ -31,6 +31,7 @@ exports[`Transition should render properly 1`] = `
 }
 
 <div
+  className=""
   style={null}
 >
   <Fade>

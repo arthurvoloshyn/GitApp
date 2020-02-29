@@ -4,7 +4,7 @@ exports[`Alert should render a error alert with markup 1`] = `
 .c2 {
   box-sizing: border-box;
   padding: 8px;
-  padding-right: 8px;
+  padding-right: 16px;
 }
 
 .c0 {
@@ -49,6 +49,14 @@ exports[`Alert should render a error alert with markup 1`] = `
   padding: 16px;
 }
 
+.c3 {
+  color: #ccc;
+  pointer-events: all;
+  position: absolute;
+  right: 8px;
+  top: 4px;
+}
+
 <AlertWrapper
   bordered={false}
   dark={false}
@@ -78,7 +86,7 @@ exports[`Alert should render a error alert with markup 1`] = `
     </AlertIcon>
     <Box
       p={2}
-      pr={2}
+      pr={3}
     >
       <div
         className="c2"
@@ -88,6 +96,25 @@ exports[`Alert should render a error alert with markup 1`] = `
         </p>
       </div>
     </Box>
+    <AlertButton
+      data-id=""
+      data-testid="AlertButton"
+      onClick={[Function]}
+      type="button"
+    >
+      <button
+        className="c3"
+        data-id=""
+        data-testid="AlertButton"
+        onClick={[Function]}
+        type="button"
+      >
+        <IconWrapper
+          src="/media/icons/times.svg"
+          width={10}
+        />
+      </button>
+    </AlertButton>
   </div>
 </AlertWrapper>
 `;
@@ -96,7 +123,7 @@ exports[`Alert should render a info alert 1`] = `
 .c2 {
   box-sizing: border-box;
   padding: 8px;
-  padding-right: 8px;
+  padding-right: 16px;
 }
 
 .c0 {
@@ -141,6 +168,14 @@ exports[`Alert should render a info alert 1`] = `
   padding: 16px;
 }
 
+.c3 {
+  color: #ccc;
+  pointer-events: all;
+  position: absolute;
+  right: 8px;
+  top: 4px;
+}
+
 <AlertWrapper
   bordered={false}
   dark={false}
@@ -170,7 +205,7 @@ exports[`Alert should render a info alert 1`] = `
     </AlertIcon>
     <Box
       p={2}
-      pr={2}
+      pr={3}
     >
       <div
         className="c2"
@@ -178,6 +213,25 @@ exports[`Alert should render a info alert 1`] = `
         This is an info message
       </div>
     </Box>
+    <AlertButton
+      data-id=""
+      data-testid="AlertButton"
+      onClick={[Function]}
+      type="button"
+    >
+      <button
+        className="c3"
+        data-id=""
+        data-testid="AlertButton"
+        onClick={[Function]}
+        type="button"
+      >
+        <IconWrapper
+          src="/media/icons/times.svg"
+          width={10}
+        />
+      </button>
+    </AlertButton>
   </div>
 </AlertWrapper>
 `;
@@ -186,7 +240,7 @@ exports[`Alert should render a success alert 1`] = `
 .c2 {
   box-sizing: border-box;
   padding: 8px;
-  padding-right: 8px;
+  padding-right: 16px;
 }
 
 .c0 {
@@ -231,6 +285,14 @@ exports[`Alert should render a success alert 1`] = `
   padding: 16px;
 }
 
+.c3 {
+  color: #ccc;
+  pointer-events: all;
+  position: absolute;
+  right: 8px;
+  top: 4px;
+}
+
 <AlertWrapper
   bordered={false}
   dark={false}
@@ -260,7 +322,7 @@ exports[`Alert should render a success alert 1`] = `
     </AlertIcon>
     <Box
       p={2}
-      pr={2}
+      pr={3}
     >
       <div
         className="c2"
@@ -268,6 +330,25 @@ exports[`Alert should render a success alert 1`] = `
         This is a success message
       </div>
     </Box>
+    <AlertButton
+      data-id=""
+      data-testid="AlertButton"
+      onClick={[Function]}
+      type="button"
+    >
+      <button
+        className="c3"
+        data-id=""
+        data-testid="AlertButton"
+        onClick={[Function]}
+        type="button"
+      >
+        <IconWrapper
+          src="/media/icons/times.svg"
+          width={10}
+        />
+      </button>
+    </AlertButton>
   </div>
 </AlertWrapper>
 `;
@@ -276,7 +357,7 @@ exports[`Alert should render a warning alert 1`] = `
 .c2 {
   box-sizing: border-box;
   padding: 8px;
-  padding-right: 8px;
+  padding-right: 16px;
 }
 
 .c0 {
@@ -321,6 +402,14 @@ exports[`Alert should render a warning alert 1`] = `
   padding: 16px;
 }
 
+.c3 {
+  color: #ccc;
+  pointer-events: all;
+  position: absolute;
+  right: 8px;
+  top: 4px;
+}
+
 <AlertWrapper
   bordered={false}
   dark={false}
@@ -350,7 +439,7 @@ exports[`Alert should render a warning alert 1`] = `
     </AlertIcon>
     <Box
       p={2}
-      pr={2}
+      pr={3}
     >
       <div
         className="c2"
@@ -358,6 +447,25 @@ exports[`Alert should render a warning alert 1`] = `
         This is a warning message
       </div>
     </Box>
+    <AlertButton
+      data-id=""
+      data-testid="AlertButton"
+      onClick={[Function]}
+      type="button"
+    >
+      <button
+        className="c3"
+        data-id=""
+        data-testid="AlertButton"
+        onClick={[Function]}
+        type="button"
+      >
+        <IconWrapper
+          src="/media/icons/times.svg"
+          width={10}
+        />
+      </button>
+    </AlertButton>
   </div>
 </AlertWrapper>
 `;
@@ -366,7 +474,7 @@ exports[`Alert should render properly 1`] = `
 .c2 {
   box-sizing: border-box;
   padding: 8px;
-  padding-right: 8px;
+  padding-right: 16px;
 }
 
 .c0 {
@@ -411,6 +519,14 @@ exports[`Alert should render properly 1`] = `
   padding: 16px;
 }
 
+.c3 {
+  color: #ccc;
+  pointer-events: all;
+  position: absolute;
+  right: 8px;
+  top: 4px;
+}
+
 <AlertWrapper
   bordered={false}
   dark={false}
@@ -440,7 +556,7 @@ exports[`Alert should render properly 1`] = `
     </AlertIcon>
     <Box
       p={2}
-      pr={2}
+      pr={3}
     >
       <div
         className="c2"
@@ -448,6 +564,25 @@ exports[`Alert should render properly 1`] = `
         Hello World
       </div>
     </Box>
+    <AlertButton
+      data-id=""
+      data-testid="AlertButton"
+      onClick={[Function]}
+      type="button"
+    >
+      <button
+        className="c3"
+        data-id=""
+        data-testid="AlertButton"
+        onClick={[Function]}
+        type="button"
+      >
+        <IconWrapper
+          src="/media/icons/times.svg"
+          width={10}
+        />
+      </button>
+    </AlertButton>
   </div>
 </AlertWrapper>
 `;

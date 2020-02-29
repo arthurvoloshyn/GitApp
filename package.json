@@ -25,6 +25,7 @@
     "mobile-detect": "^1.4.4",
     "modernizr": "^3.7.1",
     "nanoid": "^2.1.2",
+    "now": "^17.0.4",
     "polished": "^3.4.1",
     "prop-types": "^15.7.2",
     "qs": "^6.9.0",
@@ -202,7 +203,10 @@
     "deploy": "node tools/deploy",
     "publish": "node tools/publish",
     "size": "npm run build && size-limit",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build",
+    "deploy:now": "now",
+    "prod:now": "now --prod",
+    "dev:now": "now dev"
   },
   "prettier": {
     "printWidth": 100,

@@ -101,6 +101,9 @@ Alert.propTypes = {
 };
 
 Alert.defaultProps = {
+  handleClickClose: () => {},
+  icon: null,
+  id: '',
   outline: true,
   variant: 'info',
 };

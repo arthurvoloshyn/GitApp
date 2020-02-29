@@ -23,11 +23,16 @@ const RoutePrivate = ({ component: Component, isAuthenticated, to, ...rest }) =>
 RoutePrivate.propTypes = {
   component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  location: PropTypes.object,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
   to: PropTypes.string,
 };
 
 RoutePrivate.defaultProps = {
+  location: {
+    pathname: '/',
+  },
   to: '/',
 };
 
