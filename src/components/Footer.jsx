@@ -8,8 +8,8 @@ const FooterWrapper = styled.footer`
 `;
 
 const FooterIframe = styled.iframe`
+  border: 0;
   overflow: hidden;
-  border: none;
 `;
 
 const Footer = () => (

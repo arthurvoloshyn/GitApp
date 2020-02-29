@@ -35,8 +35,8 @@ exports[`Footer should render properly 1`] = `
 }
 
 .c3 {
+  border: 0;
   overflow: hidden;
-  border: none;
 }
 
 @media (min-width:768px) {
