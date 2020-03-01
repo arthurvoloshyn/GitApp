@@ -46,10 +46,8 @@
     "tree-changes": "^0.5.1"
   },
   "devDependencies": {
-    "@babel/parser": "^7.7.5",
-    "@typescript-eslint/eslint-plugin": "^2.11.0",
-    "@typescript-eslint/parser": "^2.11.0",
     "@babel/core": "^7.6.2",
+    "@babel/parser": "^7.7.5",
     "@babel/plugin-external-helpers": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "7.5.5",
     "@babel/plugin-proposal-decorators": "7.6.0",
@@ -78,6 +76,8 @@
     "@size-limit/preset-app": "^2.1.6",
     "@svgr/webpack": "^4.3.3",
     "@testing-library/cypress": "^5.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/parser": "^2.11.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
@@ -114,10 +114,10 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.2",
     "eslint-plugin-redux-saga": "^1.1.1",
     "eslint-plugin-standard": "^4.0.1",
@@ -199,7 +199,7 @@
     "test:e2e:dev": "cypress open",
     "format": "prettier \"**/*.{js,jsx}\" --write",
     "validate": "npm run lint && npm run lint:styles && npm run test:coverage && flow && npm run build && npm run test:e2e && size-limit",
-    "serve": "serve --listen 3000 dist",
+    "serve": "serve --listen 3000 build",
     "deploy": "node tools/deploy",
     "publish": "node tools/publish",
     "size": "npm run build && size-limit",
@@ -244,7 +244,7 @@
   },
   "size-limit": [
     {
-      "path": "./dist/scripts/*.js",
+      "path": "./build/scripts/*.js",
       "limit": "220 kb"
     }
   ]
