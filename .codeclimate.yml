@@ -27,6 +27,7 @@ checks:
 exclude_patterns:
   - coverage/**/*
   - build/**/*
+  - dist/**/*
   - cypress/**/*
   - documentation/**/*
   - node_modules/**/*

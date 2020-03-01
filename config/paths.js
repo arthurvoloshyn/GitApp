@@ -21,7 +21,7 @@ const resolveModule = (resolveFn, filePath) => {
 module.exports = {
   appPath: resolvePath('.'),
   appAssets: resolvePath('assets'),
-  appBuild: resolvePath('build'),
+  appBuild: resolvePath('dist'),
   appHtml: resolvePath('assets/index.html'),
   appIndexJs: resolveModule(resolvePath, 'src/index'),
   appModernizr: resolvePath('src/vendor/modernizr-custom.js'),

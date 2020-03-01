@@ -199,7 +199,7 @@
     "test:e2e:dev": "cypress open",
     "format": "prettier \"**/*.{js,jsx}\" --write",
     "validate": "npm run lint && npm run lint:styles && npm run test:coverage && flow && npm run build && npm run test:e2e && size-limit",
-    "serve": "serve --listen 3000 build",
+    "serve": "serve --listen 3000 dist",
     "deploy": "node tools/deploy",
     "publish": "node tools/publish",
     "size": "npm run build && size-limit",
@@ -244,7 +244,7 @@
   },
   "size-limit": [
     {
-      "path": "./build/scripts/*.js",
+      "path": "./dist/scripts/*.js",
       "limit": "220 kb"
     }
   ]
