@@ -195,7 +195,7 @@
     "test:coverage": "jest --bail --coverage",
     "test:watch": "jest --watchAll --verbose",
     "test:e2e": "start-server-and-test serve http://localhost:3000 test:e2e:run",
-    "test:e2e:run": "cypress run --record --key adbe5dd9-10e2-42aa-b679-da6d31ae5d51",
+    "test:e2e:run": "cypress run --record --key d7dfa287-aab8-4ed5-a4c1-df0b49596bb4",
     "test:e2e:dev": "cypress open",
     "format": "prettier \"**/*.{js,jsx}\" --write",
     "validate": "npm run lint && npm run lint:styles && npm run test:coverage && flow && npm run build && npm run test:e2e && size-limit",
