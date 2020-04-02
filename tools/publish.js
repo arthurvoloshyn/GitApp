@@ -1,4 +1,4 @@
-/*eslint-disable no-console */
+/* eslint-disable no-console */
 const chalk = require('chalk');
 const Rsync = require('rsync');
 

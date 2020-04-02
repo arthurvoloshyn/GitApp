@@ -1,4 +1,4 @@
-/*eslint-disable func-names, prefer-arrow-callback, no-console */
+/* eslint-disable func-names, prefer-arrow-callback, no-console */
 const path = require('path');
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const evalSourceMapMiddleware = require('react-dev-utils/evalSourceMapMiddleware');
