@@ -1,6 +1,6 @@
 # React-Redux-Saga GitApp
 
-[Demo](https://gitapp.now.sh/)
+[Demo](https://gitapp.arturw1998.vercel.app/)
 
 ### Provides
 
