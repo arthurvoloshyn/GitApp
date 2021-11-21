@@ -35,8 +35,6 @@ exports[`App should render properly for anonymous users 1`] = `
           </Route>
         </Switch>
       </Main>
-      <Footer>
-      </Footer>
       <Connect(SystemAlerts)>
       </Connect(SystemAlerts)>
       <_default>

@@ -9,15 +9,18 @@ export const ReloadWrapper = styled.div`
   }
 `;
 
-const Reload = () => (
-  <ReloadWrapper>
-    <Heading as="h6" mb={3}>
-      There's a new version of this app!
-    </Heading>
-    <Button variant="dark" bordered size="sm" onClick={() => window.location.reload()}>
-      Reload
-    </Button>
-  </ReloadWrapper>
-);
+const Reload = () => {
+  const handleReload = () => window.location.reload();
+  return (
+    <ReloadWrapper>
+      <Heading as="h6" mb={3}>
+        There's a new version of this app!
+      </Heading>
+      <Button variant="dark" bordered size="sm" onClick={handleReload}>
+        Reload
+      </Button>
+    </ReloadWrapper>
+  );
+};
 
 export default Reload;

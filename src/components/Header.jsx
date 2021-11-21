@@ -61,17 +61,20 @@ const Logout = styled.button`
   }
 `;
 
-const Header = ({ dispatch }) => (
-  <HeaderWrapper>
-    <HeaderContainer>
-      <Logo type="logo" />
-      <Logout onClick={() => dispatch(logOut())}>
-        <span>logout</span>
-        <Icon name="sign-out" width={16} />
-      </Logout>
-    </HeaderContainer>
-  </HeaderWrapper>
-);
+const Header = ({ dispatch }) => {
+  const handleLogOut = () => dispatch(logOut());
+  return (
+    <HeaderWrapper>
+      <HeaderContainer>
+        <Logo type="logo" />
+        <Logout onClick={handleLogOut}>
+          <span>logout</span>
+          <Icon name="sign-out" width={16} />
+        </Logout>
+      </HeaderContainer>
+    </HeaderWrapper>
+  );
+};
 
 Header.propTypes = {
   dispatch: PropTypes.func.isRequired,

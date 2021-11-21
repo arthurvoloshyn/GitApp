@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Github from 'components/GitHub';
 
-import { Box, Container, Heading, Link, Paragraph, Screen, Text, utils } from 'styled-minimal';
+import { Box, Container, Heading, Screen, Text, utils } from 'styled-minimal';
 
 const { spacer } = utils;
 
@@ -17,12 +17,6 @@ const Private = () => (
     <Container verticalPadding>
       <Header>
         <Heading>Oh hai!</Heading>
-        <Paragraph>
-          You can get this gitApp{' '}
-          <Link href="https://github.com/ArturW1998/GitApp/" target="_blank">
-            here
-          </Link>
-        </Paragraph>
       </Header>
       <Box textAlign="center" mb={4}>
         <Heading as="h5">Here's some GitHub data</Heading>
